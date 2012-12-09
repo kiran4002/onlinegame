@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  price: 9.99
+
+two:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  price: 9.99
+game:
+title: Need for Speed:Mostwanted
+description:
+Need for Speed:MostWanted is game Beat them all one-on-one to become Fairhavens Most Wanted. Swing the odds in your favor by modifying your car with such pursuit-busting delights as: Reinforced Chassis,Reinflating Tires, Impact Protection, Powershot Nitrous or Track Tires.
+price: 39.99
+image_url: nfsmw.jpg
