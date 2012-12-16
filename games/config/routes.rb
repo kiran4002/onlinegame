@@ -1,4 +1,15 @@
 Games::Application.routes.draw do
+  get "chat/index"
+
+  get "map/index"
+
+  get "tweet/user_page"
+
+  get "video/index"
+
+  resources :orders
+
+
   resources :line_items
 
 
@@ -8,6 +19,8 @@ Games::Application.routes.draw do
   get "store/index"
 
   resources :products
+  match 'user_page' => 'tweet#user_page'
+  match 'user_tweet' => 'tweet#user_tweet'
 
 
   # The priority is based upon order of creation:

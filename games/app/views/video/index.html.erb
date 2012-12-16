@@ -1,0 +1,156 @@
+<h1>Video#index</h1>
+<p>Find me in app/views/video/index.html.erb</p>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+	
+	<div id="main-container">
+		
+		<div id="main" class="wrapper clearfix">	
+		<div id="box">
+		<center><h2>Choose below</h2></center>
+		<form action="">
+		<table>
+		<tr>
+		<td><input type="radio" name="game" value="need for speed" onclick="getContent(this.value);"/>Need for speed</td>
+        <td><input type="radio" name="game" value="ea updates" onclick="getContent(this.value);" /> EA updates</td>
+		<td><input type="radio" name="game" value="crysis" onclick="getContent(this.value);" /> crysis</td>
+		</tr>
+		<tr>
+		<td><input type="radio" name="game" value="games" onclick="getContent(this.value);" /> games</td>
+        <td><input type="radio" name="game" value="medal of honor" onclick="getContent(this.value);"/>medal od honor</td>
+		<td><input type="radio" name="game" value="ea upadte" onclick="getContent(this.value);"/>updates</td>
+		</tr>
+		<tr>
+		<td><input type="radio" name="game" value="ea updates" onclick="getContent(this.value);"/>ea updates</td>
+        <td><input type="radio" name="game" value="ea updates" onclick="getContent(this.value);"/> ea updates</td>
+		<td><input type="radio" name="game" value="ea updates" onclick="getContent(this.value);"/>need for speed</td>
+		</tr>
+		</table>
+		
+		</form>		
+	</div>
+			<!--<div id="images"></div>-->
+			<div id="videos"></div>
+			
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->
+
+	<div id="footer-container">
+		<footer class="wrapper">
+			<h3>footer</h3>
+		</footer>
+	</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
+
+
+
+<script type="text/javascript">
+ function getContent(value){
+               var x = value;
+ 
+ /*alert(x);*/
+ 
+ 
+ getVideo(value);
+/* getFlicker(value);*/
+ 
+ function getVideo(value){
+                  var max_videos = 6;  // How many to show
+	
+	
+	// Compute the request URL (either by username or by search term)
+	//  Note: "alt=json-in-script&callback=?" params are in URL to allow cross-domain JSON using jQuery
+	//  See: http://docs.jquery.com/Ajax/jQuery.getJSON#urldatacallback
+	var url;
+	
+		url = "http://gdata.youtube.com/feeds/api/videos?vq=" + escape(value) + "&max-results=" + max_videos +
+			"&alt=json-in-script&callback=?";
+	
+	// Clear the HTML display
+	
+	document.getElementById("videos").innerHTML = "";
+	// Get the data from the web service and process
+	$.getJSON(url,
+		function(data)
+		{
+			var text ="";
+			$.each(data.feed.entry, function(i,item)
+			{
+				// Extract video ID from the videos API ID
+				var api_id = item.id.$t; api_id.match(/\/(\w+?)$/);
+				var id = RegExp.$1;
+				
+				//alert(id);
+				// Format the HTML for this video
+				//text += '<div  class="video">' +
+					//'<object width="225" height="144"><param name="movie" value="http://www.youtube.com/v/' + id + '&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/' + id + '&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="250" height="150"></embed></object></div>';
+				text += '<div  class="video">' +'<a class="fancybox-media" href="http://www.youtube.com/watch?v='+id+'"><img src="http://img.youtube.com/vi/'+id+'/0.jpg" width="300" height="300"  /></a></div>'
+				<!-- Now append to the HTML display
+				//$(text).appendTo("#videos");
+				-->
+				<!--alert(text);-->
+				
+	
+			});
+			
+			$("#videos").html(text);
+			
+		}
+	);
+	};
+	
+function getFlicker(value){
+						document.getElementById("images").innerHTML = "";
+$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+  {
+    tags: value,
+    tagmode: "any",
+    format: "json"
+  },
+  function(data) {
+    var images="";
+    $.each(data.items, function(i,item){
+      //$("<img/>").attr("src", item.media.m).appendTo("#images");
+	   images += "<a class='fancybox-button' rel='fancybox-button' href='"+item.media.m+"'><img src='"+item.media.m+" '  /></a>"; 
+      if ( i == 10) return false;
+    });
+	$("#images").html(images);
+  });
+  
+	}
+  $(document).ready(function() {
+  
+  $('.fancybox-media').fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+		helpers : {
+			media : {}
+		}
+	});
+	$(".fancybox-button").fancybox({
+	
+		prevEffect		: 'none',
+		nextEffect		: 'none',
+		closeBtn		: false,
+		helpers		: {
+			title	: { type : 'inside' },
+			buttons	: {}
+		}
+	});
+});
+	
+	
+ 
+
+
+ 
+ 
+ }
+
+</script>
+
+
+

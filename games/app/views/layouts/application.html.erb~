@@ -6,6 +6,12 @@
   <%= stylesheet_link_tag "depot" , :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>Google Maps JavaScript API</title>
+    <link href="assets/default.css"
+       rel="stylesheet" type="text/css">
+    
 </head>
 <body id="store">
  <div id="banner">
@@ -14,14 +20,26 @@
  </div>
  <div id="columns">
   <div id="side">
-   <a href="http://www....">Home</a><br />
-   <a href="http://www..../faq">Questions</a><br />
-   <a href="http://www..../news">News</a><br />
-   <a href="http://www..../contact">Contact</a><br />
+   <a href="http://localhost:3000">Home</a><br />
+   <a href="http://localhost:3000/video/index">videos</a><br />
+   <a href="http://localhost:3000/tweet/user_page">twitter</a><br />
+   <a href="http://localhost:3000/map/index">map</a><br />
+   <div id="cart">
+   <% if @cart %>
+   <%= hidden_div_if(@cart.line_items.empty?, :id => "cart" ) do %>
+    <%= render @cart %>
+    <% end %>
+   <% end %>
+   </div>
  </div>
 <div id="main">
 
 <%= yield %>
+<APPLET code=main.class height=450 width=600 
+  archive=gmorkirc40.jar codebase="http://javachat.krey.net">
+<PARAM NAME="channel" VALUE="#channel">
+<PARAM NAME="server" VALUE="javachat.krey.net">
+</APPLET>
 </div>
 </div>
 

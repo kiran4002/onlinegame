@@ -1,0 +1,32 @@
+<div id="control">
+      <strong>Start:</strong>
+      <select id="start" onchange="calcRoute();">
+        <option value="dublin, 1">Dublin1</option>
+        <option value="dublin, 2">Dublin2</option>
+        <option value="dublin, 3">Dublin3</option>
+        <option value="dublin, 4">Dublin4</option>
+        <option value="dublin, 5">Dublin5</option>
+        <option value="Drumglen, Dr">Drumglen</option>
+        <option value="Belgard, Rd">Belgard Rd</option>
+        <option value="Cabinteely, Bypass/N11">Cabinteely</option>
+        <option value="Cherryfield, Park">Cherryfield Park</option>
+        <option value="Merrion, Rd">Merrion Rd</option>
+        <option value="Kilmore, Crescent">Kilmore Crescent</option>
+        <option value="Finglas, Rd/N2">Finglas</option>
+      </select>
+      <strong>End:</strong>
+      <select id="end" onchange="calcRoute();">
+        <option value="dublin, 1">Dublin1</option>
+        <option value="dublin, 2">Dublin2</option>
+        <option value="dublin, 3">Dublin3</option>
+        <option value="dublin, 4">Dublin4</option>
+        <option value="dublin, 5">Dublin5</option>
+        <option value="Drumglen, Dr">Drumglen</option>
+        <option value="Belgard, Rd">Belgard Rd</option>
+        <option value="Cabinteely, Bypass/N11">Cabinteely</option>
+        <option value="Cherryfield, Park">Cherryfield Park</option>
+        <option value="Merrion, Rd">Merrion Rd</option>
+        <option value="Kilmore, Crescent">Kilmore Crescent</option>
+        <option value="Finglas, Rd/N2">Finglas</option>
+      </select>
+    </div>

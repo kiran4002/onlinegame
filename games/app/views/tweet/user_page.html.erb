@@ -1,0 +1,6 @@
+<h1> seend tweet to ur friends </h1>
+
+<%= form_for(@tweet, :url => '/user_tweet') do |tweet_form| %>
+ <%= tweet_form.text_area :tweet_content %>
+ <%= tweet_form.submit "Tweet" %>
+<% end %>
